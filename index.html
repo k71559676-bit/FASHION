@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#11101a">
+  <title>VÉRTICE — Probador virtual con IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#inicio"><span class="brand-mark">V</span><span>VÉRTICE<span class="brand-dot">.</span></span></a>
+    <nav class="main-nav">
+      <a class="active" href="#inicio">Inicio</a>
+      <a href="#probador">Probador virtual</a>
+      <a href="#catalogo">Colección</a>
+      <a href="#como-funciona">Cómo funciona</a>
+    </nav>
+    <a class="nav-cta" href="#probador">Probar ahora <span>↗</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="inicio">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> MODA + TECNOLOGÍA</div>
+        <h1>Tu estilo.<br><span>Sin límites.</span></h1>
+        <p class="hero-lead">Descubre cómo te queda antes de elegir. Prueba diferentes prendas de forma virtual con una experiencia creada para ti.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#probador">Comenzar a probar <span>→</span></a>
+          <a class="text-link" href="#como-funciona">Descubre cómo funciona <span>↗</span></a>
+        </div>
+        <div class="hero-proof"><div class="proof-avatars"><i>V</i><i>✦</i><i>+</i></div><span>Explora estilos. Encuentra el tuyo.</span></div>
+        <div class="hero-highlights"><span>✦ Experiencia intuitiva</span><span>⌁ Prueba desde cualquier lugar</span><span>◈ Tu estilo, tus reglas</span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-orbit orbit-a"></div><div class="hero-orbit orbit-b"></div>
+        <div class="hero-image-card">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=85" onerror="this.src='https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=85'" alt="Modelo con conjunto de moda">
+          <div class="image-tag"><span class="tag-icon">✦</span><span><b>Tu próximo look</b><small>Imagina · Prueba · Elige</small></span></div>
+        </div>
+        <div class="floating-note note-top"><span class="spark">✧</span><span><b>Prueba virtual</b><small>Una nueva forma de elegir</small></span></div>
+        <div class="floating-note note-bottom"><span class="check">✓</span><span><b>Tu estilo, a tu manera</b><small>Explora distintas posibilidades</small></span></div>
+      </div>
+    </section>
+
+    <section class="stats-strip section-wrap">
+      <div><strong>01</strong><span>Sube tu fotografía</span></div><div><strong>02</strong><span>Elige una prenda</span></div><div><strong>03</strong><span>Visualiza tu look</span></div>
+    </section>
+
+    <section class="try-section section-wrap" id="probador">
+      <div class="section-heading">
+        <div><div class="eyebrow">TU PROBADOR PERSONAL</div><h2>Arma tu look <span>a tu manera.</span></h2></div>
+        <p>Sube una foto tuya y otra de la prenda que quieres probar. La experiencia está diseñada para que tengas el control en cada paso.</p>
+      </div>
+
+      <div class="try-progress">
+        <div class="progress-step active"><span>01</span><b>Tu foto</b></div><i></i>
+        <div class="progress-step"><span>02</span><b>Tu prenda</b></div><i></i>
+        <div class="progress-step"><span>03</span><b>Resultado</b></div>
+      </div>
+
+      <div class="upload-pair">
+        <article class="upload-card panel">
+          <div class="upload-card-head"><div><span class="step-number">01</span><div><h3>Sube tu fotografía</h3><p>La imagen de la persona que usará la prenda.</p></div></div><span class="required-tag">OBLIGATORIO</span></div>
+          <label class="smart-dropzone" id="personDropzone" for="personInput">
+            <input type="file" id="personInput" accept="image/jpeg,image/png,image/webp">
+            <div class="drop-empty" id="personEmpty"><div class="drop-symbol">↑</div><b>Arrastra tu foto aquí</b><span>o <u>explora tus archivos</u></span><small>JPG, PNG o WEBP · Máximo 10 MB</small></div>
+            <img class="drop-preview hidden" id="personPreview" alt="Vista previa de la persona">
+            <span class="image-ready hidden" id="personReady">✓ Foto cargada</span>
+          </label>
+          <div class="upload-card-foot"><span>◎ Foto frontal, cuerpo completo y buena iluminación.</span><button class="mini-action hidden" id="removePerson" type="button">Quitar</button></div>
+          <div class="photo-theme-status" id="photoThemeStatus"><span class="theme-status-dot"></span><span>El ambiente visual se adaptará automáticamente a los tonos de tu fotografía.</span></div>
+        </article>
+
+        <article class="upload-card panel">
+          <div class="upload-card-head"><div><span class="step-number">02</span><div><h3>Sube la prenda</h3><p>La ropa que quieres visualizar en tu fotografía.</p></div></div><span class="required-tag">OBLIGATORIO</span></div>
+          <label class="smart-dropzone" id="garmentDropzone" for="garmentInput">
+            <input type="file" id="garmentInput" accept="image/jpeg,image/png,image/webp">
+            <div class="drop-empty" id="garmentEmpty"><div class="drop-symbol">＋</div><b>Sube una foto de la ropa</b><span>o <u>explora tus archivos</u></span><small>Preferiblemente prenda completa y fondo limpio</small></div>
+            <img class="drop-preview hidden" id="garmentPreview" alt="Vista previa de la prenda">
+            <span class="image-ready hidden" id="garmentReady">✓ Prenda cargada</span>
+          </label>
+          <div class="upload-card-foot"><span>◎ Evita fotos con personas u objetos que tapen la prenda.</span><button class="mini-action hidden" id="removeGarment" type="button">Quitar</button></div>
+        </article>
+      </div>
+
+      <div class="guidance-row">
+        <div class="guidance-card">
+          <span class="guidance-icon">◎</span>
+          <div><b>Una foto que te represente</b><p>Elige una imagen nítida, con la persona de frente, sin recortes y con brazos ligeramente separados del cuerpo.</p></div>
+        </div>
+        <div class="guidance-card">
+          <span class="guidance-icon">◇</span>
+          <div><b>La prenda debe verse completa</b><p>Usa una foto donde se aprecien la forma, el color y los detalles de la ropa. Evita sombras fuertes y objetos encima.</p></div>
+        </div>
+        <div class="privacy-note"><span>⌑</span><div><b>Tu contenido importa</b><p>Las imágenes se muestran en esta vista previa local. La conexión con el servicio de IA se realizará mediante un servidor seguro.</p></div></div>
+      </div>
+
+      <div class="catalog-panel panel" id="catalogo">
+        <div class="catalog-heading"><div><div class="eyebrow">¿NO TIENES UNA FOTO A MANO?</div><h3>Explora prendas de ejemplo</h3><p>También puedes elegir una de estas imágenes para probar el flujo.</p></div><span class="subtle-label">OPCIONAL</span></div>
+        <div class="category-tabs" role="tablist" aria-label="Filtrar prendas">
+          <button class="category-tab active" data-category="todos">Todo</button><button class="category-tab" data-category="tops">Tops</button><button class="category-tab" data-category="abrigos">Abrigos</button><button class="category-tab" data-category="vestidos">Vestidos</button>
+        </div>
+        <div class="catalog-meta"><span>COLECCIÓN DE REFERENCIA</span><span>6 PRENDAS · 3 CATEGORÍAS</span></div>
+        <div class="product-grid" id="productGrid">
+          <button class="product-card" data-id="top1" data-name="Top minimal" data-category="tops" data-image="https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=700&q=85"><span class="product-image"><img src="https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=700&q=85" alt="Top minimal"><i class="selected-check">✓</i></span><span class="product-info"><b>Top minimal</b><small>Esencial · Marfil</small></span></button>
+          <button class="product-card" data-id="blazer" data-name="Blazer urbano" data-category="abrigos" data-image="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=700&q=85"><span class="product-image"><img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=700&q=85" alt="Blazer urbano"><i class="selected-check">✓</i></span><span class="product-info"><b>Blazer urbano</b><small>Contemporáneo · Arena</small></span></button>
+          <button class="product-card" data-id="dress" data-name="Vestido fluido" data-category="vestidos" data-image="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=85"><span class="product-image"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=85" alt="Vestido fluido"><i class="selected-check">✓</i></span><span class="product-info"><b>Vestido fluido</b><small>Elegante · Negro</small></span></button>
+          <button class="product-card" data-id="shirt" data-name="Camisa clásica" data-category="tops" data-image="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=700&q=85"><span class="product-image"><img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=700&q=85" alt="Camisa clásica"><i class="selected-check">✓</i></span><span class="product-info"><b>Camisa clásica</b><small>Casual · Blanca</small></span></button>
+          <button class="product-card" data-id="jacket" data-name="Chaqueta moderna" data-category="abrigos" data-image="https://images.unsplash.com/photo-1548126032-079a0fb0099d?auto=format&fit=crop&w=700&q=85"><span class="product-image"><img src="https://images.unsplash.com/photo-1548126032-079a0fb0099d?auto=format&fit=crop&w=700&q=85" alt="Chaqueta moderna"><i class="selected-check">✓</i></span><span class="product-info"><b>Chaqueta moderna</b><small>Streetwear · Oscura</small></span></button>
+          <button class="product-card" data-id="dress2" data-name="Vestido casual" data-category="vestidos" data-image="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=85"><span class="product-image"><img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=85" alt="Vestido casual"><i class="selected-check">✓</i></span><span class="product-info"><b>Vestido casual</b><small>Ligero · Estampado</small></span></button>
+        </div>
+        <div class="catalog-selected" id="catalogSelected">Selecciona una prenda para cargarla en el probador.</div>
+      </div>
+
+      <div class="result-panel panel">
+        <div class="result-topline"><div><span class="step-number">03</span><div><h3>Tu prueba virtual</h3><p>Comprueba tus imágenes antes de generar el resultado.</p></div></div><span class="subtle-label" id="readinessLabel">ESPERANDO IMÁGENES</span></div>
+        <div class="result-content">
+          <div class="result-stage" id="resultStage">
+            <div class="result-empty" id="resultEmpty"><div class="result-spark">✧</div><b>Tu próximo look empieza aquí</b><span>Cuando cargues las dos imágenes, aquí podrás iniciar la prueba virtual.</span></div>
+            <div class="comparison-preview hidden" id="comparisonPreview"><div><img id="comparePerson" alt="Tu fotografía"><small>PERSONA</small></div><span class="compare-plus">+</span><div><img id="compareGarment" alt="Prenda seleccionada"><small>PRENDA</small></div></div>
+          </div>
+          <div class="result-details"><div class="eyebrow">LISTA PARA EL SIGUIENTE PASO</div><h3 id="resultTitle">Prepara tus dos imágenes</h3><p id="resultDescription">Carga tu fotografía y la imagen de la prenda. Podrás revisar ambas antes de enviarlas al motor de inteligencia artificial.</p><div class="readiness-list"><span id="personStatus">○ Fotografía de la persona pendiente</span><span id="garmentStatus">○ Fotografía de la prenda pendiente</span></div><button class="btn btn-primary generate-button" id="tryOnButton" disabled>Preparar prueba virtual <span>→</span></button><button class="btn btn-outline full-btn reset-button" id="resetButton">Limpiar y empezar de nuevo</button>
+          <button class="theme-reset-button" id="resetThemeButton" type="button">↺ Restaurar tema original</button><p class="disclaimer">La carga y vista previa ya funcionan. La generación de la imagen final se habilitará al conectar FASHN AI mediante Cloudflare Worker.</p></div>
+        </div>
+        <div class="result-security"><span>✧</span> La prueba final conservará la fotografía original como referencia y aplicará la prenda seleccionada cuando el motor de IA esté conectado.</div>
+      </div>
+    </section>
+
+    <section class="how-section section-wrap" id="como-funciona">
+      <div class="section-heading"><div><div class="eyebrow">SENCILLO E INTUITIVO</div><h2>Así de fácil es <span>probar.</span></h2></div><p>Una experiencia digital pensada para explorar tu estilo con libertad.</p></div>
+      <div class="how-grid">
+        <article class="how-card"><span>01</span><div class="how-icon">▧</div><h3>Sube tu imagen</h3><p>Utiliza una fotografía clara para preparar tu experiencia virtual.</p></article>
+        <article class="how-card"><span>02</span><div class="how-icon">◇</div><h3>Elige tu estilo</h3><p>Explora prendas, categorías y opciones para crear nuevas combinaciones.</p></article>
+        <article class="how-card"><span>03</span><div class="how-icon">✧</div><h3>Visualiza el look</h3><p>Revisa tu resultado y descubre nuevas posibilidades para vestir.</p></article>
+      </div>
+    </section>
+    <section class="closing section-wrap"><div><div class="eyebrow">TU ESTILO, TU DECISIÓN</div><h2>La moda se transforma.<br><span>Tu creatividad también.</span></h2></div><a class="btn btn-primary" href="#probador">Explorar probador ↗</a></section>
+  </main>
+  <footer><a class="brand" href="#inicio"><span class="brand-mark">V</span><span>VÉRTICE<span class="brand-dot">.</span></span></a><span>© 2026 VÉRTICE. Experiencia de probador virtual.</span><a href="#inicio">Volver arriba ↑</a></footer>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
